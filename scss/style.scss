@@ -1,0 +1,213 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition-property: color, background-color;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+}
+
+.test {
+    border: 1px solid black;
+}
+
+// Universal Code 
+$button-color : ("add" : rgb(6, 179, 0),
+    "add:hover" :rgb(5, 161, 0),
+    "edit" : rgb(218, 116, 0),
+    "edit:hover" : rgb(192, 102, 0),
+    "delete" : rgb(212, 0, 0),
+    "delete:hover" : rgb(180, 0, 0));
+
+.button {
+    border: none;
+    background: none;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-top: 1em;
+    border-radius: 0.25rem;
+}
+
+.button.full {
+    width: 100%;
+    text-align: center;
+}
+
+@each $event,
+$color in $button-color {
+    .button.#{$event} {
+        background-color: $color;
+    }
+}
+
+// Universal End
+
+@mixin color-mode {
+    background-color: var(--background);
+    color: var(--color);
+    border-color: var(--border);
+}
+
+body {
+    --background: #fff;
+    --color: #000;
+    --border: #000;
+
+    font-family: "Ubuntu",
+        sans-serif;
+    font-size: 20px;
+    @include color-mode;
+}
+
+body.dark-mode {
+    --background: #000;
+    --color: #fff;
+    ;
+    --border: #fff;
+    @include color-mode;
+}
+
+.tools {
+    display: flex;
+    justify-content: space-around;
+
+    .screen-mode {
+        padding: 0.25em;
+        font-size: 1.5rem;
+        border-radius: 50%;
+    }
+
+    .screen-mode:hover {
+        cursor: pointer;
+        background-color: var(--color);
+        color: var(--background);
+    }
+}
+
+.container {
+    margin: 1em auto;
+    width: 40%;
+    border-radius: 0.25em;
+    padding: 0.5em;
+    border: 0.25rem solid var(--border);
+
+    .header {
+        padding: 0.5em 0.25em;
+        font-weight: bold;
+
+        .title {
+            font-size: 1.5rem;
+            border-bottom: 0.25rem solid var(--border);
+        }
+    }
+
+    .content {
+        padding: 0.5em 0.25em;
+
+        .form-control {
+
+            .form-label {
+                display: flex;
+                flex-direction: column;
+                font-size: 1.25rem;
+
+                .input {
+                    display: flex;
+                    gap: 0.5rem;
+
+                    input {
+                        width : 100%;
+                    }
+
+                    button {
+                        color : var(--color);
+                        border: 0.1rem solid var(--border);
+                    }
+                    button:hover {
+                        color : var(--background);
+                        background-color: var(--color);
+                        border-color : var(--background);
+                    }
+                }
+
+                input,
+                select {
+                    outline: none;
+                    border: none;
+                    margin-top: 0.5rem;
+                    font-size: 1rem;
+                    padding: 0.25rem;
+                    background-color: var(--background);
+                    color: var(--color);
+                    border-bottom: 0.1rem solid var(--border);
+                }
+
+                input:focus,
+                select:focus,
+                input:hover,
+                select:hover {
+                    border-bottom: 0.2rem solid var(--border);
+                }
+            }
+        }
+
+        .form-control:not(:first-child) {
+            margin-top: 1em;
+        }
+
+        .result {
+            border: 0.2rem solid var(--border);
+            margin-top: 1em;
+            padding: 2rem 0.5rem;
+            text-align: center;
+        }
+    }
+}
+
+.bg-loader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--color);
+    display: flex;
+
+    .loader {
+        width: 10rem;
+        height: 10rem;
+        border: 1rem solid var(--background);
+        border-radius: 50%;
+        border-top: 1rem solid var(--border);
+        animation: spin 0.5s linear infinite;
+    }
+}
+
+body.dark-mode .bg-loader {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes spin {
+    0% {
+        rotate: 0deg;
+    }
+
+    100% {
+        rotate: 360deg;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .container {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .container {
+        width: 90%;
+    }
+}

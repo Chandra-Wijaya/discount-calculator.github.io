@@ -1,0 +1,205 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition-property: color, background-color;
+  transition-duration: 0.2s;
+  transition-timing-function: linear;
+}
+
+.test {
+  border: 1px solid black;
+}
+
+.button {
+  border: none;
+  background: none;
+  color: white;
+  padding: 0.5rem;
+  cursor: pointer;
+  margin-top: 1em;
+  border-radius: 0.25rem;
+}
+
+.button.full {
+  width: 100%;
+  text-align: center;
+}
+
+.button.add {
+  background-color: rgb(6, 179, 0);
+}
+
+.button.add:hover {
+  background-color: rgb(5, 161, 0);
+}
+
+.button.edit {
+  background-color: rgb(218, 116, 0);
+}
+
+.button.edit:hover {
+  background-color: rgb(192, 102, 0);
+}
+
+.button.delete {
+  background-color: rgb(212, 0, 0);
+}
+
+.button.delete:hover {
+  background-color: rgb(180, 0, 0);
+}
+
+body {
+  --background: #fff;
+  --color: #000;
+  --border: #000;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 20px;
+  background-color: var(--background);
+  color: var(--color);
+  border-color: var(--border);
+}
+
+body.dark-mode {
+  --background: #000;
+  --color: #fff;
+  --border: #fff;
+  background-color: var(--background);
+  color: var(--color);
+  border-color: var(--border);
+}
+
+.tools {
+  display: flex;
+  justify-content: space-around;
+}
+.tools .screen-mode {
+  padding: 0.25em;
+  font-size: 1.5rem;
+  border-radius: 50%;
+}
+.tools .screen-mode:hover {
+  cursor: pointer;
+  background-color: var(--color);
+  color: var(--background);
+}
+
+.container {
+  margin: 1em auto;
+  width: 40%;
+  border-radius: 0.25em;
+  padding: 0.5em;
+  border: 0.25rem solid var(--border);
+}
+.container .header {
+  padding: 0.5em 0.25em;
+  font-weight: bold;
+}
+.container .header .title {
+  font-size: 1.5rem;
+  border-bottom: 0.25rem solid var(--border);
+}
+.container .content {
+  padding: 0.5em 0.25em;
+}
+.container .content .form-control .form-label {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.25rem;
+}
+.container .content .form-control .form-label .input {
+  display: flex;
+  gap: 0.5rem;
+}
+.container .content .form-control .form-label .input input {
+  width: 100%;
+}
+.container .content .form-control .form-label .input button {
+  color: var(--color);
+  border: 0.1rem solid var(--border);
+}
+.container .content .form-control .form-label .input button:hover {
+  color: var(--background);
+  background-color: var(--color);
+  border-color: var(--background);
+}
+.container .content .form-control .form-label input,
+.container .content .form-control .form-label select {
+  outline: none;
+  border: none;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+  padding: 0.25rem;
+  background-color: var(--background);
+  color: var(--color);
+  border-bottom: 0.1rem solid var(--border);
+}
+.container .content .form-control .form-label input:focus,
+.container .content .form-control .form-label select:focus,
+.container .content .form-control .form-label input:hover,
+.container .content .form-control .form-label select:hover {
+  border-bottom: 0.2rem solid var(--border);
+}
+.container .content .form-control:not(:first-child) {
+  margin-top: 1em;
+}
+.container .content .result {
+  border: 0.2rem solid var(--border);
+  margin-top: 1em;
+  padding: 2rem 0.5rem;
+  text-align: center;
+}
+
+.bg-loader {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--color);
+  display: flex;
+}
+.bg-loader .loader {
+  width: 10rem;
+  height: 10rem;
+  border: 1rem solid var(--background);
+  border-radius: 50%;
+  border-top: 1rem solid var(--border);
+  -webkit-animation: spin 0.5s linear infinite;
+          animation: spin 0.5s linear infinite;
+}
+
+body.dark-mode .bg-loader {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+@-webkit-keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+
+@keyframes spin {
+  0% {
+    rotate: 0deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
+}
+@media screen and (max-width: 992px) {
+  .container {
+    width: 70%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .container {
+    width: 90%;
+  }
+}/*# sourceMappingURL=style.css.map */
